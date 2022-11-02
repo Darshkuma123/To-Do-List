@@ -23,7 +23,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String CREATE_TODO_TABLE= "CREATE TABLE " + NAME + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, "
             + STATUS + " INTEGER)";
     private SQLiteDatabase db;
-    private DatabaseHandler(Context context)
+    public DatabaseHandler(Context context)
     {
         super(context,NAME,null,VERSION);
     }
@@ -40,6 +40,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+NAME);
         //creating new db
         onCreate(db);
+
     }
 
     public void openDatabase()
@@ -97,5 +98,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     {
         db.delete(NAME,ID+"=?", new String[]{String.valueOf(id)});
     }
+
 
 }
